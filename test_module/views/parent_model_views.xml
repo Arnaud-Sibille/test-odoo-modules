@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="parent_model_view_tree">
+            <field name="name">Parent Model list View</field>
+            <field name="model">parent.model</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name"/>
+                    <field name="monetary_amount"/>
+                    <field name="non_stored_currency_id"/>
+                </list>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="parent_model_action_window">
+            <field name="name">Parent Model</field>
+            <field name="res_model">parent.model</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+    </data>
+</odoo>

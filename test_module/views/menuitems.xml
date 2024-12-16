@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem name="Test Module" id="test_module_root_menu"/>
+        <menuitem name="Test Model" id="test_model_menu" parent="test_module_root_menu" action="test_model_action_window"/>
+        <menuitem name="Parent Model" id="parent_model_menu" parent="test_module_root_menu" action="parent_model_action_window"/>
+
+    </data>
+</odoo>
