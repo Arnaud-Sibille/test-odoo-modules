@@ -11,7 +11,6 @@ class TestModel(models.Model):
     currency_id = fields.Many2one(
         'res.currency',
         string="Currency",
-        required=True,
     )
     amount = fields.Monetary(
         currency_field='currency_id',
@@ -32,6 +31,10 @@ class TestModel(models.Model):
     )
     parent_model_non_stored_computed = fields.Float(
         related='parent_model_id.non_stored_computed',
+    )
+    parent_model_name = fields.Char(
+        string="Parent model name",
+        related='parent_model_id.name',
     )
 
     @api.depends('name')
