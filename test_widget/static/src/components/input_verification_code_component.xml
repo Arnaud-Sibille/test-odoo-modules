@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+    <t t-name="test_widget.inputVerificationCodeComponent">
+        <div class="row w-50 mt-0 pt-0 mx-auto">
+            <t t-foreach="[...Array(props.nbInputs).keys()]" t-as="i" t-key="i">
+                <input
+                    class="col border border border-2 rounded m-1 p-0 text-center"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="1"
+                    t-ref="input_{{i}}"
+                    t-on-input="onInput"
+                    t-on-keydown="onKeydown"
+                    t-on-focus="onFocus"
+                    t-on-paste="onPaste"
+                />
+            </t>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+
+    <t t-name="test_widget.testComponent">
+        <InputVerificationCodeComponent
+            nbInputs="6"
+            onFilled.bind="onFilled"
+        />
+    </t>
+
+</templates>

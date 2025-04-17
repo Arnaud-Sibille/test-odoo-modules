@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="test_client_action" model="ir.actions.client">
+            <field name="name">Test Widget</field>
+            <field name="tag">test_widget.test_action</field>
+            <field name="target">new</field>
+            <field name="context">{'footer': false}</field>
+        </record>
+
+        <menuitem id="test_widget_menu_root" name="Test Widget"/>
+
+        <menuitem id="test_widget_menu_action"
+                name="Client Action"
+                parent="test_widget_menu_root"
+                action="test_client_action"/>
+
+    </data>
+</odoo>
