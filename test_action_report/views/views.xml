@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="test_report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div>yo</div>
+                </t>
+            </t>
+        </template>
+
+        <record id="test_report_action" model="ir.actions.report">
+            <field name="name">Test Report Action</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">test_action_report.test_report</field>
+            <field name="report_file">test_action_report.test_report</field>
+        </record>
+
+    </data>
+</odoo>
