@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="random_parter" model="res.partner">
+        <field name="name">Random Guy</field>
+        <field name="active">False</field>
+    </record>
+</odoo>

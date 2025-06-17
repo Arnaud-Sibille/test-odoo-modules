@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates xml:space="preserve">
+    <t t-name="test_mail_thread.SomeModelKanbanController" t-inherit="web.KanbanView">
+        <xpath expr="//Layout" position="inside">
+            <Chatter
+                threadModel="'some.model'"
+                threadId="1"
+            />
+        </xpath>
+    </t>
+</templates>

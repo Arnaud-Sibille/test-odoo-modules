@@ -2,10 +2,64 @@
 <odoo>
     <data>
 
+        <template id="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <t t-foreach="options['columns']" t-as="column">
+                            <th><t t-out="column['name']"/></th>
+                        </t>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="lines" t-as="line">
+                        <tr>
+                            <th><t t-out="line['name']"/></th>
+                            <t t-foreach="line['columns']" t-as="column_values">
+                                <td><t t-out="column_values['name']"/></td>
+                            </t>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </template>
+
+        <!-- <template id="table">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col text-center">
+                        <t t-out="report_title"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <t t-foreach="options['columns']" t-as="column">
+                        <div class="col text-center">
+                            <t t-out="column['name']"/>
+                        </div>
+                    </t>
+                </div>
+                <t t-foreach="lines" t-as="line">
+                    <div class="row">
+                        <div class="col-3 text-center">
+                            <t t-out="line['name']"/>
+                        </div>
+                        <t t-foreach="line['columns']" t-as="column_values">
+                            <div class="col text-end">
+                                <t t-out="column_values['name']"/>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </div>
+        </template> -->
+
         <template id="test_report">
             <t t-call="web.html_container">
                 <t t-call="web.external_layout">
-                    <div>yo</div>
+                    <t t-call="test_action_report.table"/>
                 </t>
             </t>
         </template>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="partner_ledger_report" model="account.report">
+            <field name="name">Partner Ledger</field>
+            <field name="filter_account_type">both</field>
+            <field name="filter_unfold_all" eval="True"/>
+            <field name="custom_handler_model_id" ref="model_partner_ledger_handler"/>
+            <field name="column_ids">
+                <record id="partner_ledger_column_journal" model='account.report.column'>
+                    <field name="name">Journal</field>
+                    <field name="expression_label">col1</field>
+                </record>
+                <record id="partner_ledger_column_account" model='account.report.column'>
+                    <field name="name">Account</field>
+                    <field name="expression_label">col2</field>
+                </record>
+                <record id="partner_ledger_column_invoice_date" model='account.report.column'>
+                    <field name="name">Invoice Date</field>
+                    <field name="expression_label">col3</field>
+                </record>
+                <record id="partner_ledger_column_date" model='account.report.column'>
+                    <field name="name">Date</field>
+                    <field name="expression_label">col4</field>
+                </record>
+                <record id="partner_ledger_column_matching" model='account.report.column'>
+                    <field name="name">Matching</field>
+                    <field name="expression_label">col5</field>
+                </record>
+                <record id="partner_ledger_column_debit" model='account.report.column'>
+                    <field name="name">Debit</field>
+                    <field name="expression_label">col6</field>
+                </record>
+                <record id="partner_ledger_column_credit" model='account.report.column'>
+                    <field name="name">Credit</field>
+                    <field name="expression_label">col7</field>
+                </record>
+                <record id="partner_ledger_column_amount_currency" model='account.report.column'>
+                    <field name="name">Amount Currency</field>
+                    <field name="expression_label">col8</field>
+                </record>
+                <record id="partner_ledger_column_balance" model="account.report.column">
+                    <field name="name">Balance</field>
+                    <field name="expression_label">col9</field>
+                </record>
+            </field>
+            <field name="line_ids">
+                <record id="partner_ledger_line" model="account.report.line">
+                    <field name="name">Yo</field>
+                    <field name="groupby">partner_id,currency_id,id</field>
+                    <field name="expression_ids">
+                        <record id="partner_ledger_expression_journal_id" model="account.report.expression">
+                            <field name="label">col1</field>
+                            <field name="engine">custom</field>
+                            <field name="formula">_report_custom_engine_partner_ledger_report</field>
+                            <field name="subformula">journal_id</field>
+                        </record>
+                        <record id="partner_ledger_expression_account_code" model="account.report.expression">
+                            <field name="label">col2</field>
+                            <field name="engine">custom</field>
+                            <field name="formula">_report_custom_engine_partner_ledger_report</field>
+                            <field name="subformula">account_code</field>
+                        </record>
+                        <record id="partner_ledger_expression_invoice_date" model="account.report.expression">
+                            <field name="label">col3</field>
+                            <field name="engine">custom</field>
+                            <field name="formula">_report_custom_engine_partner_ledger_report</field>
+                            <field name="subformula">invoice_date</field>
+                        </record>
+                        <record id="partner_ledger_expression_date" model="account.report.expression">
+                            <field name="label">col4</field>
+                            <field name="engine">custom</field>
+                            <field name="formula">_report_custom_engine_partner_ledger_report</field>
+                            <field name="subformula">date</field>
+                        </record>
+                        <record id="partner_ledger_expression_matching_number" model="account.report.expression">
+                            <field name="label">col5</field>
+                            <field name="engine">custom</field>
+                            <field name="formula">_report_custom_engine_partner_ledger_report</field>
+                            <field name="subformula">matching_number</field>
+                        </record>
+                        <record id="partner_ledger_expression_debit" model="account.report.expression">
+                            <field name="label">col6</field>
+                            <field name="engine">custom</field>
+                            <field name="formula">_report_custom_engine_partner_ledger_report</field>
+                            <field name="subformula">debit</field>
+                        </record>
+                        <record id="partner_ledger_expression_credit" model="account.report.expression">
+                            <field name="label">col7</field>
+                            <field name="engine">custom</field>
+                            <field name="formula">_report_custom_engine_partner_ledger_report</field>
+                            <field name="subformula">credit</field>
+                        </record>
+                        <record id="partner_ledger_expression_amount_currency" model="account.report.expression">
+                            <field name="label">col8</field>
+                            <field name="engine">custom</field>
+                            <field name="formula">_report_custom_engine_partner_ledger_report</field>
+                            <field name="subformula">amount_currency</field>
+                        </record>
+                        <record id="partner_ledger_expression_balance" model="account.report.expression">
+                            <field name="label">col9</field>
+                            <field name="engine">custom</field>
+                            <field name="formula">_report_custom_engine_partner_ledger_report</field>
+                            <field name="subformula">balance</field>
+                        </record>
+                    </field>
+                </record>
+            </field>
+        </record>
+
+        <record id="partner_ledger_action" model="ir.actions.client">
+            <field name="name">Partner Ledger</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'report_id': ref('partner_ledger3.partner_ledger_report')}"/>
+        </record>
+
+        <menuitem id="partner_ledger_top_menu" name="Partner Ledger"/>
+        <menuitem id="partner_ledger_menu" parent="partner_ledger_top_menu" name="Partner Ledger" action="partner_ledger_action"/>
+    </data>
+</odoo>

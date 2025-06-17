@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="some_model_from_view" model="ir.ui.view">
+            <field name="name">Some Model Form View</field>
+            <field name="model">some.model</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <field name="name"/>
+                        </div>
+                        <group>
+                            <field name="amount"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="some_model_kanban_view" model="ir.ui.view">
+            <field name="name">Some Model Kanban View</field>
+            <field name="model">some.model</field>
+            <field name="arch" type="xml">
+                <kanban js_class="some_model_kanban">
+                    <t t-name="card">
+                        <h3>Omg this is a card</h3>
+                        <field name="name"/>
+                        <field name="amount"/>
+                        <div style="display: flex; justify-content: space-between">
+                            <div t-if="record.amount.raw_value > 10000">
+                                that is some big big amount
+                            </div>
+                            <div style="height: 20px; width: 20px; border-radius: 10px; background-color: lightblue;"></div>
+                            <div style="text-align: center;">
+                                <div style="display: flex; gap: 0.7rem;">
+                                    <i title="eye" class="fa fa-eye"/>
+                                    <i title="eye" class="fa fa-eye"/>
+                                </div>
+                                o
+                            </div>
+                        </div>
+                    </t>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="some_model_window_action" model="ir.actions.act_window">
+            <field name="name">Some Model</field>
+            <field name="res_model">some.model</field>
+            <field name="view_mode">list,form,kanban</field>
+        </record>
+
+        <menuitem name="Test Mail Thread" id="test_mail_thread_root_menu"/>
+        <menuitem name="Some Model" id="some_model_menu" parent="test_mail_thread_root_menu" action="some_model_window_action"/>
+
+    </data>
+</odoo>
