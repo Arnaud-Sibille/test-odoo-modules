@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="a_model_window_action" model="ir.actions.act_window">
+            <field name="name">A Model</field>
+            <field name="res_model">a.model</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem id="a_model_root_menu" name="A Model"/>
+        <menuitem id="a_model_sub_menu" name="A Model" parent="a_model_root_menu" action="a_model_window_action"/>
+
+    </data>
+</odoo>
