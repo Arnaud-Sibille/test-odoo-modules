@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_a_model">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="a_model">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h1>A Model</h1>
+                            <div>Fixed Precision <span t-esc="a_model.fixed_precision"/></div>
+                            <div>Zero Precision <span t-esc="a_model.zero_precision"/></div>
+                            <div>No Precision <span t-esc="a_model.no_precision"/></div>
+                            <div>---</div>
+                            <div>Fixed Precision <span t-field="a_model.fixed_precision"/></div>
+                            <div>Zero Precision <span t-field="a_model.zero_precision"/></div>
+                            <div>No Precision <span t-field="a_model.no_precision"/></div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="a_model_report_action" model="ir.actions.report">
+            <field name="name">A Model Report Action</field>
+            <field name="model">a.model</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">test_float_precision.report_a_model</field>
+            <field name="report_file">test_float_precision.report_a_model</field>
+            <field name="binding_model_id" ref="model_a_model"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

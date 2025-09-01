@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="yo_yo_yo_yo_yo_yo_yo_decimal_precision" model="decimal.precision">
+            <field name="name">Yo_Yo_Yo_Yo_Yo_Yo_Yo</field>
+            <field name="digits">3</field>
+        </record>
+    </data>
+</odoo>
