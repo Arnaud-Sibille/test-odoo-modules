@@ -14,6 +14,7 @@
                             <field name="amount"/>
                             <field name="currency_id"/>
                             <field name="parent_model_id"/>
+                            <field name="amount_times_5" invisible="len(name)"/>
                         </group>
                     </sheet>
                 </form>
