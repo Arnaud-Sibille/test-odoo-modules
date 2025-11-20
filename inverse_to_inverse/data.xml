@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="form_view" model="ir.ui.view">
+            <field name="name">inverse.to.inverse.model.form</field>
+            <field name="model">inverse.to.inverse.model</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="an_amount" digits="[12, 12]"/>
+                        <field name="inverse_of_that_amount" digits="[12, 12]"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="form_view_compute_to_compute" model="ir.ui.view">
+            <field name="name">compute.to.compute.model.form</field>
+            <field name="model">compute.to.compute.model</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="an_amount" digits="[12, 12]"/>
+                        <field name="inverse_of_that_amount" digits="[12, 12]"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="window_action" model="ir.actions.act_window">
+            <field name="name">Inverse To Inverse</field>
+            <field name="res_model">inverse.to.inverse.model</field>
+             <field name="view_mode">list,form</field>
+        </record>
+        <record id="window_action_compute_to_compute" model="ir.actions.act_window">
+            <field name="name">Compute To Compute</field>
+            <field name="res_model">compute.to.compute.model</field>
+             <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem id="root_menu" name="Inverse To Inverse"/>
+        <menuitem 
+            id="child_menu"
+            name="Inverse To Inverse"
+            parent="root_menu"
+            action="window_action"
+        />
+        <menuitem 
+            id="child_menu_compute_to_compute"
+            name="Compute To Compute"
+            parent="root_menu"
+            action="window_action_compute_to_compute"
+        />
+
+    </data>
+</odoo>

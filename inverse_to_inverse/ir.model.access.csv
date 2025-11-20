@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+inverse_to_inverse.access_inverse_to_inverse_model,access_inverse_to_inverse_model,inverse_to_inverse.model_inverse_to_inverse_model,base.group_user,1,1,1,1
+inverse_to_inverse.access_compute_to_compute_model,access_compute_to_compute_model,inverse_to_inverse.model_compute_to_compute_model,base.group_user,1,1,1,1
