@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="some_model_view" model="ir.ui.view">
+            <field name="name">Some Model list view</field>
+            <field name="model">test.required.compute.some.model</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="required_field"/>
+                    <field name="required_field_length"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="some_model_window_action" model="ir.actions.act_window">
+            <field name="name">Some Model</field>
+            <field name="res_model">test.required.compute.some.model</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem id="some_model_root_menu" name="Some Model"/>
+        <menuitem id="some_model_sub_menu" name="Some Model" parent="some_model_root_menu" action="some_model_window_action"/>
+    </data>
+</odoo>

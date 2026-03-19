@@ -12,7 +12,7 @@ class SimpleCustomReportHandler(models.Model):
             res = {dic['id']: dic['name'] for dic in self.env['res.partner'].browse(id for id in ids if id).read(['name'])}
             res = dict(sorted(res.items(), key=lambda x:x[1]))
             if None in ids:
-                res[None]: self.env._("Unknown")
+                res[None] = self.env._("Unknown")
             return res
 
         return {
@@ -37,6 +37,9 @@ class SimpleCustomReportHandler(models.Model):
         select_clause = []
 
         for field_name in subformulas:
+            if field_name == '_currency_amount_currency':
+                select_clause.append(SQL('MAX(account_move_line.currency_id) AS _currency_amount_currency'))
+                continue
             field_expr = self.env['account.move.line']._field_to_sql('account_move_line', field_name, query)
             field = self.env['account.move.line']._fields[field_name]
             if field.type in ('integer', 'float', 'monetary'):

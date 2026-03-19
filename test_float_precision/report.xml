@@ -3,17 +3,30 @@
     <data>
         <template id="report_a_model">
             <t t-call="web.html_container">
-                <t t-foreach="docs" t-as="a_model">
-                    <t t-call="web.external_layout">
+                <t t-call="web.external_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <t t-set="o" t-value="o.with_context(lang=o.env.lang)"/>   
                         <div class="page">
                             <h1>A Model</h1>
-                            <div>Fixed Precision <span t-esc="a_model.fixed_precision"/></div>
-                            <div>Zero Precision <span t-esc="a_model.zero_precision"/></div>
-                            <div>No Precision <span t-esc="a_model.no_precision"/></div>
+                            <div>Fixed Precision <span t-esc="o.fixed_precision"/></div>
+                            <div>Zero Precision <span t-esc="o.zero_precision"/></div>
+                            <div>No Precision <span t-esc="o.no_precision"/></div>
                             <div>---</div>
-                            <div>Fixed Precision <span t-field="a_model.fixed_precision"/></div>
-                            <div>Zero Precision <span t-field="a_model.zero_precision"/></div>
-                            <div>No Precision <span t-field="a_model.no_precision"/></div>
+                            <div>Fixed Precision <span t-field="o.fixed_precision"/></div>
+                            <div>Zero Precision <span t-field="o.zero_precision"/></div>
+                            <div>No Precision <span t-field="o.no_precision"/></div>
+                            <div>Price Unit
+                                <span t-field="o.price_unit" t-options="{'widget': 'float'}"/>
+                            </div>
+                            <div> Price
+                                <span
+                                t-field="o.price"
+                                t-options="{
+                                    'widget': 'float',
+                                    'precision': o.currency_id.decimal_places
+                                }"
+                                />
+                            </div>
                         </div>
                     </t>
                 </t>

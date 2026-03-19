@@ -1,13 +1,11 @@
 {
-    "name": "Test float precision",
+    "name": "Test compute to required field",
     "description": "to test",
-    "depends": ["base", "product"],
+    "depends": ["base"],
     "license": "AGPL-3",
     "author": "Arnaud S",
     "data": [
         "ir.model.access.csv",
         "views.xml",
-        "report.xml",
-        "data.xml",
     ],
 }
