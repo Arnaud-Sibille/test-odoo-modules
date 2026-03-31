@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="parent_model_window_action" model="ir.actions.act_window">
+        <field name="name">Parent Model</field>
+        <field name="res_model">parent.model</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="child_model_list_view" model="ir.ui.view">
+        <field name="name">Child Model List View</field>
+        <field name="model">child.model</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="parent_model_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="child_model_window_action" model="ir.actions.act_window">
+        <field name="name">Child Model</field>
+        <field name="res_model">child.model</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="test_require_archive_root_menu" name="Test required parent archived"/>
+    <menuitem id="test_require_archive_parent_menu" name="Parent Model" parent="test_require_archive_root_menu" action="parent_model_window_action"/>
+    <menuitem id="test_require_archive_child_menu" name="Child Model" parent="test_require_archive_root_menu" action="child_model_window_action"/>
+</odoo>
