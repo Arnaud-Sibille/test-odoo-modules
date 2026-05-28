@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="some_model_list_view" model="ir.ui.view">
+        <field name="name">some.model.list</field>
+        <field name="model">some.model</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="something"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="some_model_kanban_view" model="ir.ui.view">
+        <field name="name">some.model.kanban</field>
+        <field name="model">some.model</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <t t-name="card">
+                    <field name="name"/>
+                    <field name="something"/>
+                </t>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="some_model_search_view" model="ir.ui.view">
+        <field name="name">some.model.search</field>
+        <field name="model">some.model</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="some_model_window_action" model="ir.actions.act_window">
+        <field name="name">Some Model</field>
+        <field name="res_model">some.model</field>
+        <field name="view_mode">list,kanban</field>
+        <field name="help" type="html">
+            <div>nothingg</div>
+        </field>
+    </record>
+
+    <menuitem id="some_model_root_menu" name="Some Model"/>
+    <menuitem id="some_model_sub_menu" name="Some Model" parent="some_model_root_menu" action="some_model_window_action"/>
+</odoo>

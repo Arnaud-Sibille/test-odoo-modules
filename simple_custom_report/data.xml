@@ -3,7 +3,9 @@
     <data>
         <record id="simple_custom_report" model="account.report">
             <field name="name">Simple Custom Report</field>
+            <field name="filter_unfold_all" eval="True"/>
             <field name="custom_handler_model_id" ref="model_simple_custom_report_handler"/>
+            <field name="groupby">partner_id,id</field>
             <field name="column_ids">
                 <record id="simple_custom_report_invoice_date_col" model="account.report.column">
                     <field name="name">Invoice Date</field>
@@ -40,7 +42,6 @@
             <field name="line_ids">
                 <record id="simple_custom_report_line" model="account.report.line">
                     <field name="name">Simple Custom Report</field>
-                    <field name="groupby">partner_id,id</field>
                     <field name="expression_ids">
                         <record id="simple_custom_report_invoice_date_expr" model="account.report.expression">
                             <field name="label">invoice_date</field>
@@ -93,6 +94,7 @@
                         <record id="simple_custom_report_balance_expr" model="account.report.expression">
                             <field name="label">balance</field>
                             <field name="engine">custom</field>
+                            <field name="auditable" eval="True"></field>
                             <field name="formula">_report_custom_engine_simple_custom_report</field>
                             <field name="subformula">balance</field>
                         </record>

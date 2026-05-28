@@ -1,0 +1,70 @@
+<odoo>
+
+    <!-- View -->
+    <record id="test_model_window_action" model="ir.actions.act_window">
+        <field name="name">Test Model</field>
+        <field name="res_model">test.model</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="test_model_root_menu" name="Test Model"/>
+    <menuitem id="test_model_sub_menu" name="Some Model" parent="test_model_root_menu" action="test_model_window_action"/>
+
+    <!-- Report -->
+    <template id="report_test_model">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="test_pdf_report.report_test_model_document"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_test_model_document">
+        <t t-call="web.external_layout" o="o">
+            <h3 t-out="o.name"/>
+        </t>
+    </template>
+
+    <template id="report_test_model_document_inherit" inherit_id="test_pdf_report.report_test_model_document">
+        <xpath expr="//h3" position="after">
+            <div>yo</div>
+        </xpath>
+    </template>
+
+    <template id="report_test_model_oui">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="test_pdf_report.report_test_model_document_oui"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_test_model_document_oui" inherit_id="test_pdf_report.report_test_model_document" primary="True">
+        <xpath expr="//h3" position="after">
+            <div>ouiiiiiii</div>
+        </xpath>
+    </template>
+
+
+    <record id="action_test_model_report" model="ir.actions.report">
+        <field name="name">Test Model</field>
+        <field name="model">test.model</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">test_pdf_report.report_test_model</field>
+        <field name="report_file">test_pdf_report.report_test_model</field>
+        <field name="binding_model_id" ref="test_pdf_report.model_test_model"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_test_model_report_oui" model="ir.actions.report">
+        <field name="name">Test Model OUI</field>
+        <field name="model">test.model</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">test_pdf_report.report_test_model_oui</field>
+        <field name="report_file">test_pdf_report.report_test_model_oui</field>
+        <field name="binding_model_id" ref="test_pdf_report.model_test_model"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+</odoo>

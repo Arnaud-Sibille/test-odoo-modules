@@ -23,13 +23,17 @@ class SimpleCustomReportHandler(models.Model):
             }
         }
 
-    def _report_custom_engine_simple_custom_report(self, expressions, options, date_scope, current_groupby, next_groupby, offset=0, limit=None, warnings=None):
+    def _report_custom_engine_simple_custom_report(self, expressions, options, date_scope, current_groupby, warnings=None):
         subformulas = expressions.mapped('subformula')
 
-        line_dicts = self._get_lines(subformulas, options, date_scope, current_groupby, offset, limit)
+        line_dicts = self._get_lines(subformulas, options, date_scope, current_groupby)
 
         if not current_groupby:
-            return line_dicts[0] if line_dicts else {subformula: None for subformula in subformulas}
+            res = line_dicts[0] if line_dicts else {subformula: None for subformula in subformulas}
+            return {
+                **res,
+                'has_sublines': True,
+            }
 
         return [(line_dict[current_groupby], line_dict | {'has_sublines': True})  for line_dict in line_dicts]
 
