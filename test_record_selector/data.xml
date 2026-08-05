@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="test_record_selector_client_action" model="ir.actions.client">
+        <field name="name">Test Record Selector</field>
+        <field name="tag">test_record_selector.test_action</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="root_menu" name="Test Record Selector"/>
+    <menuitem id="test_record_selector" name="Test Record Selector" parent="root_menu" action="test_record_selector_client_action"/>
+</odoo>

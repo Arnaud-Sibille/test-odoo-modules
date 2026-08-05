@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+
+    <t t-name="test_record_selector.testComponent">
+        <div class="container p-4">
+            <div class="card p-4 d-inline-flex">
+                <input class="o_input" style="width: 5ch;"/>
+                <RecordSelector t-props="this.recordSelectorProps"/>
+            </div>
+        </div>
+    </t>
+
+</templates>
